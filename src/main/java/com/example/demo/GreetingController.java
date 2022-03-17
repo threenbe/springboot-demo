@@ -22,7 +22,6 @@ public class GreetingController {
     // The @GetMapping annotation ensures that HTTP GET requests to the /greeting service are mapped to
     // the greeting() method. Other annotations include e.g. @PostMapping for POST. These derive from the
     // @RequestMapping annotation, which can be used as a synonym (e.g. @RequestMapping(method=GET)).
-    @GetMapping("/greeting")
     // @RequestParam binds the value of the query string parameter* "name" into the "name" parameter
     // of the greeting() method. If the "name" parameter is absent in the request, the default value
     // is used.
@@ -31,6 +30,8 @@ public class GreetingController {
     // So, in this case, we can provide a query string parameter of e.g. "User" like:
     // http://localhost:8080/greeting?name=User
     // and then we use the query string to format our greeting message.
+
+    @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
